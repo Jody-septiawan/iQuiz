@@ -9,13 +9,17 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router } from "react-router-dom";
 import { ToastProvider } from "react-toast-notifications";
 
+import { UserContextProvider } from "./contexts/userContext";
+
 ReactDOM.render(
   <React.StrictMode>
-    <Router>
-      <ToastProvider>
-        <App />
-      </ToastProvider>
-    </Router>
+    <UserContextProvider>
+      <Router>
+        <ToastProvider>
+          <App />
+        </ToastProvider>
+      </Router>
+    </UserContextProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

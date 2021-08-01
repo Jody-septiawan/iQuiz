@@ -16,7 +16,7 @@
 }
 
 .btn-super-user-landing:hover {
-  background-color: #ffd900 !important;
+  background-color: #836f00 !important;
 }
 
 .btn-super-user-landing:active {
@@ -62,4 +62,102 @@ button:active {
 
 .card-landing {
   border-radius: 25px !important;
+}
+
+.btn-auth {
+  background-color: #58191900;
+  border: none;
+}
+
+.btn-auth:hover {
+  color: #23d3fa;
+}
+
+.img-profile-navbar {
+  border-radius: 50%;
+  height: 40px;
+  background-color: #2980b3;
+}
+
+.btn-pay {
+  background-color: #0d9636 !important;
+  border: none !important;
+}
+
+.btn-pay:hover {
+  background-color: #0cc443 !important;
+}
+
+.btn-pay:active {
+  background-color: #0d9636 !important;
+}
+
+.btn-dropdown {
+  background-color: #00c3ff00 !important;
+  border: none !important;
+  color: #000000 !important;
+}
+
+.btn-dropdown::after {
+  display: none !important;
+}
+
+.group-profile {
+  margin-bottom: 20px;
+}
+
+.group-profile .title {
+  color: #2980b3 !important;
+  font-size: 18px;
+  font-weight: bold !important;
+}
+
+.group-profile .content {
+  font-size: 15px;
+  font-weight: 200 !important;
+}
+
+.card-transaction {
+  background-color: #444c4759;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  padding: 8px;
+}
+
+.group-card-transaction {
+  height: 640px;
+  overflow-y: auto;
+}
+
+/* width */
+.group-card-transaction::-webkit-scrollbar {
+  width: 0px;
+}
+
+.card-profile {
+  background-color: #134766;
+  border-radius: 10px;
+}
+
+.img-profile {
+  background-color: #2980b3;
+  border-radius: 50%;
+  width: 40%;
+  margin: 20px 0;
+}
+
+.card-profile-first .name {
+  color: #ffffff;
+  font-size: 20px;
+}
+
+.card-profile-first .title {
+  color: #ffffff;
+  font-size: 13px;
+  padding-bottom: 20px;
+}
+
+.card-profile-second {
+  background-color: #ffffff;
+  border-radius: 0 0 10px 10px;
 }

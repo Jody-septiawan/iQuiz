@@ -2,12 +2,12 @@ import { Container, Row, Col, Button } from "react-bootstrap";
 import { useToasts } from "react-toast-notifications";
 
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 import imgLanding from "../assets/Landing.svg";
 
 export default function Landing() {
   const { addToast, removeAllToasts } = useToasts();
-  let d = new Date();
 
   const handleClick = () => {
     removeAllToasts();
@@ -42,14 +42,7 @@ export default function Landing() {
         </Row>
         <Row className="">
           <Col>
-            <div className="card shadow card-landing fixed-bottom mx-5 mb-3">
-              <div
-                className="card-body text-secondary py-1 text-center"
-                style={{ fontSize: "14px" }}
-              >
-                jedeye &copy; Copyright {d.getFullYear()}
-              </div>
-            </div>
+            <Footer />
           </Col>
         </Row>
       </Container>

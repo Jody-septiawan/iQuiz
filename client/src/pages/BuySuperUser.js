@@ -1,21 +1,33 @@
+import { useContext } from "react";
 import { Card, Button, Container, Row, Col } from "react-bootstrap";
 import convertRupiah from "rupiah-format";
 import { useToasts } from "react-toast-notifications";
+import { useHistory } from "react-router-dom";
 
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+
+import { UserContext } from "../contexts/userContext";
 
 import dataPackageSuperUser from "../fakedata/packageSuperUser";
 
 export default function BuySuperUser() {
+  const [state, dispatch] = useContext(UserContext);
   const { addToast, removeAllToasts } = useToasts();
 
-  const handleClick = () => {
-    removeAllToasts();
-    const content = "Please login";
-    addToast(content, {
-      appearance: "warning",
-      autoDismiss: true,
-    });
+  let history = useHistory();
+
+  const handleClick = (id) => {
+    if (state.isLogin === true) {
+      history.push("/super-user/" + id);
+    } else {
+      removeAllToasts();
+      const content = "Please login";
+      addToast(content, {
+        appearance: "warning",
+        autoDismiss: true,
+      });
+    }
   };
   return (
     <>
@@ -29,7 +41,10 @@ export default function BuySuperUser() {
               data-aos="zoom-in"
               data-aos-delay={item.id + "00"}
             >
-              <Card className="card-package-super-user" onClick={handleClick}>
+              <Card
+                className="card-package-super-user"
+                onClick={() => handleClick(item.id)}
+              >
                 <Card.Img
                   src={item.image}
                   style={{ height: "300px" }}
@@ -43,6 +58,11 @@ export default function BuySuperUser() {
               </Card>
             </Col>
           ))}
+        </Row>
+        <Row className="">
+          <Col>
+            <Footer />
+          </Col>
         </Row>
       </Container>
     </>

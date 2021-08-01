@@ -1,30 +1,120 @@
-import { Container, Navbar as NavbarComp, Nav, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+
+import {
+  Container,
+  Navbar as NavbarComp,
+  Nav,
+  Button,
+  Dropdown,
+} from "react-bootstrap";
+import { Link, useHistory } from "react-router-dom";
+
+import { UserContext } from "../contexts/userContext";
 
 import imgLogo from "../assets/logo.png";
 
+import Auth from "./modals/Auth";
+
 export default function Navbar() {
+  let history = useHistory();
+  const [state, dispatch] = useContext(UserContext);
+  const [show, setShow] = useState(false);
+  const [title, setTitle] = useState(null);
+
+  const ImgProfile = "https://avatars.githubusercontent.com/u/44697757?v=4";
+
+  console.log(state);
+
+  const handleClose = () => {
+    setShow(false);
+    setTitle(null);
+  };
+  const handleShow = () => {
+    setShow(true);
+    setTitle(null);
+  };
+
+  const handleLogout = () => {
+    dispatch({
+      type: "LOGOUT",
+    });
+    history.push("/");
+  };
+
   return (
-    <NavbarComp expand="lg" className="py-1">
-      <Container>
-        <NavbarComp.Brand as={Link} to="/">
-          <img src={imgLogo} style={{ width: "40px" }} />
-        </NavbarComp.Brand>
-        <NavbarComp.Toggle aria-controls="basic-navbar-nav" />
-        <NavbarComp.Collapse id="basic-navbar-nav">
-          <Nav className="ms-auto">
-            <Nav.Link href="#home">Login</Nav.Link>
-            <Nav.Link href="#link">Signup</Nav.Link>
-            <Button
-              as={Link}
-              to="/buy-super-user"
-              className="btn btn-super-user-landing ms-3"
-            >
-              Super user
-            </Button>
-          </Nav>
-        </NavbarComp.Collapse>
-      </Container>
-    </NavbarComp>
+    <>
+      <NavbarComp expand="lg" className="py-1">
+        <Container>
+          <NavbarComp.Brand as={Link} to="/">
+            <img src={imgLogo} style={{ width: "40px" }} />
+          </NavbarComp.Brand>
+          <NavbarComp.Toggle aria-controls="basic-navbar-nav" />
+          <NavbarComp.Collapse id="basic-navbar-nav">
+            <Nav className="ms-auto">
+              {state.isLogin === false ? (
+                <>
+                  <button
+                    className="btn-auth"
+                    onClick={() => {
+                      handleShow();
+                      setTitle("login");
+                    }}
+                  >
+                    Login
+                  </button>
+                  <button
+                    className="btn-auth"
+                    onClick={() => {
+                      handleShow();
+                      setTitle("signup");
+                    }}
+                  >
+                    Signup
+                  </button>
+                </>
+              ) : (
+                <>
+                  {/* <Link to="/profile">
+                    <img src={ImgProfile} className="img-profile-navbar" />
+                  </Link> */}
+
+                  <Dropdown>
+                    <Dropdown.Toggle
+                      className="p-0 btn-dropdown"
+                      id="dropdown-basic"
+                    >
+                      {state.user.name}
+                      <img
+                        src={ImgProfile}
+                        className="img-profile-navbar ms-1"
+                      />
+                    </Dropdown.Toggle>
+
+                    <Dropdown.Menu className="mt-2">
+                      <Dropdown.Item as={Link} to="/profile">
+                        Profile
+                      </Dropdown.Item>
+                      <Dropdown.Divider />
+                      <Dropdown.Item onClick={handleLogout}>
+                        Logout
+                      </Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown>
+                </>
+              )}
+
+              <Button
+                as={Link}
+                to="/super-users"
+                className="btn btn-super-user-landing ms-3 d-flex align-items-center"
+              >
+                Super user
+              </Button>
+            </Nav>
+          </NavbarComp.Collapse>
+        </Container>
+      </NavbarComp>
+      <Auth show={show} title={title} handleClose={handleClose} />
+    </>
   );
 }

@@ -1,0 +1,65 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+* {
+  font-family: "Poppins", sans-serif;
+}
+
+.text-poppins {
+  font-family: "Poppins", sans-serif;
+}
+
+.btn-super-user-landing {
+  background-color: #ffd700 !important;
+  color: rgb(255, 255, 255) !important;
+  border-radius: 10px !important;
+  border: none !important;
+}
+
+.btn-super-user-landing:hover {
+  background-color: #ffd900 !important;
+}
+
+.btn-super-user-landing:active {
+  background-color: #00ffdd !important;
+}
+
+button:focus {
+  box-shadow: none !important;
+}
+
+button:active {
+  box-shadow: none !important;
+}
+
+.btn-get-started {
+  background-color: #23d3fa !important;
+  border: none !important;
+}
+
+.btn-get-started:hover {
+  background-color: #2980b3 !important;
+}
+
+.btn-get-started:active {
+  background-color: #23d3fa !important;
+}
+
+.card-header-left {
+  /* tra  */
+}
+
+.card-package-super-user {
+  border-radius: 25px !important;
+  transition: 0.4s !important;
+  box-shadow: 0 0 10px rgb(255, 255, 255);
+  cursor: pointer;
+}
+
+.card-package-super-user:hover {
+  transition: 1s !important;
+  box-shadow: 0 0 10px rgb(142, 205, 207);
+}
+
+.card-landing {
+  border-radius: 25px !important;
+}

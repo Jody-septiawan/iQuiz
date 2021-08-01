@@ -12,6 +12,7 @@ import { Link, useHistory } from "react-router-dom";
 import { UserContext } from "../contexts/userContext";
 
 import imgLogo from "../assets/logo.png";
+import ImgDiamond from "../assets/diamond.svg";
 
 import Auth from "./modals/Auth";
 
@@ -74,10 +75,6 @@ export default function Navbar() {
                 </>
               ) : (
                 <>
-                  {/* <Link to="/profile">
-                    <img src={ImgProfile} className="img-profile-navbar" />
-                  </Link> */}
-
                   <Dropdown>
                     <Dropdown.Toggle
                       className="p-0 btn-dropdown"
@@ -91,6 +88,19 @@ export default function Navbar() {
                     </Dropdown.Toggle>
 
                     <Dropdown.Menu className="mt-2">
+                      <img
+                        src={ImgDiamond}
+                        className="ms-3 me-1"
+                        style={{ maxWidth: "20px" }}
+                      />
+                      <span style={{ fontSize: "12px" }}>1240</span>
+                      <Dropdown.Item as={Link} to="/topup">
+                        Topup
+                      </Dropdown.Item>
+                      <Dropdown.Divider />
+                      <Dropdown.Item as={Link} to="/dashboard">
+                        Dashboard
+                      </Dropdown.Item>
                       <Dropdown.Item as={Link} to="/profile">
                         Profile
                       </Dropdown.Item>

@@ -2,6 +2,7 @@ import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import convertRupiah from "rupiah-format";
 import dateFormat from "dateformat";
+import randomColor from "randomcolor";
 
 import dataTransaction from "../../fakedata/transaction";
 
@@ -9,7 +10,14 @@ export default function Transaction() {
   return (
     <div className="group-card-transaction">
       {dataTransaction?.map((item) => (
-        <div className="card-transaction">
+        <div
+          className="card-transaction"
+          style={{
+            backgroundColor: `${randomColor({
+              luminosity: "dark",
+            })}`,
+          }}
+        >
           <Row>
             <Col xs="8">
               <div>{item.package}</div>

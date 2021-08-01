@@ -118,10 +118,11 @@ button:active {
 }
 
 .card-transaction {
-  background-color: #444c4759;
+  /* background-color: #444c4759; */
   border-radius: 5px;
   margin-bottom: 5px;
   padding: 8px;
+  color: #ffffff;
 }
 
 .group-card-transaction {

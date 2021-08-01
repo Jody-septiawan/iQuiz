@@ -11,6 +11,8 @@ import { UserContext } from "../contexts/userContext";
 
 import dataPackageSuperUser from "../fakedata/packageSuperUser";
 
+import ImgDiamond from "../assets/diamond.svg";
+
 export default function BuySuperUser() {
   const [state, dispatch] = useContext(UserContext);
   const { addToast, removeAllToasts } = useToasts();
@@ -45,15 +47,18 @@ export default function BuySuperUser() {
                 className="card-package-super-user"
                 onClick={() => handleClick(item.id)}
               >
-                <Card.Img
-                  src={item.image}
-                  style={{ height: "300px" }}
-                  className=""
-                />
+                <Card.Img src={item.image} style={{ height: "300px" }} />
                 <Card.Body>
                   <Card.Title>{item.title}</Card.Title>
                   <Card.Text>{item.duration}</Card.Text>
-                  <Card.Text>{convertRupiah.convert(item.price)}</Card.Text>
+                  <Card.Text>
+                    <img
+                      src={ImgDiamond}
+                      style={{ maxWidth: "23px" }}
+                      className="me-1 "
+                    />
+                    {item.diamond}
+                  </Card.Text>
                 </Card.Body>
               </Card>
             </Col>

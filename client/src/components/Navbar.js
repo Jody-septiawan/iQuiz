@@ -1,5 +1,4 @@
 import { useContext, useState } from "react";
-
 import {
   Container,
   Navbar as NavbarComp,
@@ -80,7 +79,6 @@ export default function Navbar() {
                       className="p-0 btn-dropdown"
                       id="dropdown-basic"
                     >
-                      {state.user.name}
                       <img
                         src={ImgProfile}
                         className="img-profile-navbar ms-1"

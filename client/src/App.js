@@ -7,6 +7,8 @@ import Landing from "./pages/Landing";
 import BuySuperUser from "./pages/BuySuperUser";
 import SuperUser from "./pages/SuperUser";
 import Profile from "./pages/Profile";
+import Dashboard from "./pages/Dashboard";
+import Course from "./pages/Course";
 
 function App() {
   AOS.init({ duration: 2000 });
@@ -17,6 +19,8 @@ function App() {
       <Route path="/super-users" component={BuySuperUser} />
       <Route path="/super-user/:id" component={SuperUser} />
       <Route path="/profile" component={Profile} />
+      <Route path="/dashboard" component={Dashboard} />
+      <Route path="/course/:id" component={Course} />
     </Switch>
   );
 }

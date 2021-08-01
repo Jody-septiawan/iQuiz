@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 * {
   font-family: "Poppins", sans-serif;
@@ -6,6 +6,10 @@
 
 .text-poppins {
   font-family: "Poppins", sans-serif;
+}
+
+.text-blue {
+  color: #134766;
 }
 
 .btn-super-user-landing {
@@ -161,4 +165,33 @@ button:active {
 .card-profile-second {
   background-color: #ffffff;
   border-radius: 0 0 10px 10px;
+}
+
+.text-header-customer {
+  font-weight: 600;
+  font-size: large;
+}
+
+.card-course {
+  background-color: #0a7cbe50;
+  cursor: pointer;
+  color: #000000;
+}
+
+.card-course:hover {
+  background-color: #0a7cbe;
+  color: #ffffff;
+}
+
+.card-class {
+  background-color: #1348661f;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.card-content {
+  background-color: #1a84c21f;
+  border-radius: 5px;
+  padding: 10px;
 }

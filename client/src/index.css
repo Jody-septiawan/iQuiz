@@ -12,6 +12,10 @@
   color: #134766;
 }
 
+.bg-blue {
+  background-color: #134766;
+}
+
 .btn-super-user-landing {
   background-color: #ffd700 !important;
   color: rgb(255, 255, 255) !important;

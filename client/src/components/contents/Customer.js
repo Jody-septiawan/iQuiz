@@ -1,12 +1,22 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import { FaCode } from "react-icons/fa";
 import { useHistory } from "react-router-dom";
+import { useQuery } from "react-query";
+
+import { FaCode } from "react-icons/fa";
 
 import dataCourse from "../../fakedata/course";
 
+import { API } from "../../config/api";
+
 export default function Customer() {
   let history = useHistory();
+
+  let { data: courses, refetch } = useQuery("coursesCache", async () => {
+    const response = await API.get("/courses");
+    return response.data.data;
+  });
+
   const handleClick = (id) => {
     history.push("course/" + id);
   };
@@ -19,7 +29,7 @@ export default function Customer() {
             Course
           </div>
           <Row className="mt-3">
-            {dataCourse.map((item) => (
+            {courses?.map((item) => (
               <Col xl="2" lg="3" md="4" xs="6">
                 <div
                   onClick={() => handleClick(item.id)}

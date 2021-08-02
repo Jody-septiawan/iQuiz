@@ -1,0 +1,23 @@
+USER
+npx sequelize-cli model:generate --name user --attributes fullname:string,email:string,password:string,role:string
+npx sequelize-cli model:generate --name profile --attributes phone:string,male:string,address:text,userId:integer
+
+FINANCE
+npx sequelize-cli model:generate --name wallet --attributes diamond:integer,userId:integer
+npx sequelize-cli model:generate --name diamond --attributes name:string,amount:integer,image:string,status:string
+npx sequelize-cli model:generate --name transactionDiamond --attributes userId:integer,diamondId:integer,status:string
+npx sequelize-cli model:generate --name product --attributes name:string,duration:string,desc:string,price:integer,image:string
+npx sequelize-cli model:generate --name transactionProduct --attributes userId:integer,productId:integer,status:string
+
+COURSE
+npx sequelize-cli model:generate --name course --attributes name:string,image:string,status:string,isPublish:boolean
+npx sequelize-cli model:generate --name courseLevel --attributes name:string,status:string,courseId:integer,isPublish:boolean
+npx sequelize-cli model:generate --name lesson --attributes name:string,status:string,levelId:integer,isPublish:boolean
+npx sequelize-cli model:generate --name content --attributes title:string,content:text,desc:text,correction:text,code:text,option:text,correctAnswer:text,timer:string,score:integer,status:string,categoryId:integer,lessonId:integer
+npx sequelize-cli model:generate --name score --attributes lessonId:integer,contentId:integer,userId:integer,isPublish:boolean
+
+
+SEEDER
+
+COURSE
+npx sequelize-cli seed:generate --name course

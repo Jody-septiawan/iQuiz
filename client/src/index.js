@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
+import "./admin.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
@@ -11,15 +12,21 @@ import { ToastProvider } from "react-toast-notifications";
 
 import { UserContextProvider } from "./contexts/userContext";
 
+import { QueryClient, QueryClientProvider } from "react-query";
+
+const client = new QueryClient();
+
 ReactDOM.render(
   <React.StrictMode>
-    <UserContextProvider>
-      <Router>
-        <ToastProvider>
-          <App />
-        </ToastProvider>
-      </Router>
-    </UserContextProvider>
+    <QueryClientProvider client={client}>
+      <UserContextProvider>
+        <Router>
+          <ToastProvider>
+            <App />
+          </ToastProvider>
+        </Router>
+      </UserContextProvider>
+    </QueryClientProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

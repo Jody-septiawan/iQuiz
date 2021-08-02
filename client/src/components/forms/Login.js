@@ -1,10 +1,14 @@
 import React, { useContext, useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import { useToasts } from "react-toast-notifications";
+import { useHistory } from "react-router";
 
 import { UserContext } from "../../contexts/userContext";
 
+import { API } from "../../config/api";
+
 export default function Login({ handleClose }) {
+  let history = useHistory();
   const { addToast, removeAllToasts } = useToasts();
 
   const [state, dispatch] = useContext(UserContext);
@@ -21,20 +25,58 @@ export default function Login({ handleClose }) {
     });
   };
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     try {
       e.preventDefault();
-      dispatch({
-        type: "LOGIN_SUCCESS",
-        payload: form,
+      console.log(form);
+      const config = {
+        headers: {
+          "Content-type": "application/json",
+        },
+      };
+
+      const body = JSON.stringify({
+        email: form.email,
+        password: form.password,
       });
-      handleClose();
-      removeAllToasts();
-      const content = "Login success";
-      addToast(content, {
-        appearance: "success",
-        autoDismiss: true,
-      });
+
+      const response = await API.post("/login", body, config);
+
+      if (response.data.status == "success") {
+        dispatch({
+          type: "LOGIN_SUCCESS",
+          payload: response.data.data,
+        });
+        handleClose();
+        removeAllToasts();
+        const content = "Login success";
+        addToast(content, {
+          appearance: "success",
+          autoDismiss: true,
+        });
+        // if (response.data.data.role == "ADMIN") {
+        //   history.push("/admin");
+        // }
+      } else {
+        removeAllToasts();
+        const content = response.data.message;
+        addToast(content, {
+          appearance: "error",
+          autoDismiss: true,
+        });
+      }
+
+      // dispatch({
+      //   type: "LOGIN_SUCCESS",
+      //   payload: form,
+      // });
+      // handleClose();
+      // removeAllToasts();
+      // const content = "Login success";
+      // addToast(content, {
+      //   appearance: "success",
+      //   autoDismiss: true,
+      // });
     } catch (error) {
       console.log(error);
     }

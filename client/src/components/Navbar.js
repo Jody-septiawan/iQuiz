@@ -23,8 +23,6 @@ export default function Navbar() {
 
   const ImgProfile = "https://avatars.githubusercontent.com/u/44697757?v=4";
 
-  console.log(state);
-
   const handleClose = () => {
     setShow(false);
     setTitle(null);

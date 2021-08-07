@@ -14,6 +14,12 @@ module.exports = (sequelize, DataTypes) => {
           name: "courseId",
         },
       });
+      courseLevel.hasMany(models.lesson, {
+        as: "levelLesson",
+        foreignKey: {
+          name: "levelId",
+        },
+      });
     }
   }
   courseLevel.init(

@@ -53,15 +53,15 @@ function App() {
   }, []);
 
   useEffect(() => {
-    // if (state.isLogin == true) {
-    //   if (state.user.role == "ADMIN") {
-    //     history.push("/admin");
-    //   } else {
-    //     history.push("/");
-    //   }
-    // } else {
-    //   history.push("/");
-    // }
+    if (state.isLogin == true) {
+      if (state.user.role == "ADMIN") {
+        history.push("/admin");
+      } else {
+        history.push("/");
+      }
+    } else {
+      history.push("/");
+    }
   }, [state]);
 
   return (

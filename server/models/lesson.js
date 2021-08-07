@@ -1,7 +1,5 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
+"use strict";
+const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class lesson extends Model {
     /**
@@ -10,17 +8,25 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      lesson.belongsTo(models.courseLevel, {
+        as: "lessonLevel",
+        foreignKey: {
+          name: "levelId",
+        },
+      });
     }
-  };
-  lesson.init({
-    name: DataTypes.STRING,
-    status: DataTypes.STRING,
-    levelId: DataTypes.INTEGER,
-    isPublish: DataTypes.BOOLEAN
-  }, {
-    sequelize,
-    modelName: 'lesson',
-  });
+  }
+  lesson.init(
+    {
+      name: DataTypes.STRING,
+      status: DataTypes.STRING,
+      levelId: DataTypes.INTEGER,
+      isPublish: DataTypes.BOOLEAN,
+    },
+    {
+      sequelize,
+      modelName: "lesson",
+    }
+  );
   return lesson;
 };

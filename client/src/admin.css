@@ -1,3 +1,19 @@
 .card-course-level-admin {
   background-color: rgb(237, 237, 237);
 }
+
+.card-level-lesson-admin {
+  background-color: rgb(216, 216, 216);
+  font-size: "14px";
+  cursor: pointer;
+}
+
+.card-level-lesson-admin:hover {
+  background-color: rgb(189, 188, 188);
+}
+
+.content-middle-admin {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}

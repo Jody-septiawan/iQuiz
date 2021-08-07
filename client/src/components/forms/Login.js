@@ -28,7 +28,7 @@ export default function Login({ handleClose }) {
   const onSubmit = async (e) => {
     try {
       e.preventDefault();
-      console.log(form);
+
       const config = {
         headers: {
           "Content-type": "application/json",
@@ -54,9 +54,6 @@ export default function Login({ handleClose }) {
           appearance: "success",
           autoDismiss: true,
         });
-        // if (response.data.data.role == "ADMIN") {
-        //   history.push("/admin");
-        // }
       } else {
         removeAllToasts();
         const content = response.data.message;
@@ -65,18 +62,6 @@ export default function Login({ handleClose }) {
           autoDismiss: true,
         });
       }
-
-      // dispatch({
-      //   type: "LOGIN_SUCCESS",
-      //   payload: form,
-      // });
-      // handleClose();
-      // removeAllToasts();
-      // const content = "Login success";
-      // addToast(content, {
-      //   appearance: "success",
-      //   autoDismiss: true,
-      // });
     } catch (error) {
       console.log(error);
     }

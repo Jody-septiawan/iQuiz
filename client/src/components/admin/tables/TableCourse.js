@@ -43,7 +43,7 @@ export default function TableCourse({ courses }) {
               >
                 <ImEnter />
               </Button>
-              <Button className="btn-secondary btn-sm py-0 px-1 mx-1">
+              <Button className="btn-info btn-sm py-0 px-1 mx-1">
                 <MdEdit />
               </Button>
               <Button className="btn-warning btn-sm py-0 px-1 mx-1">

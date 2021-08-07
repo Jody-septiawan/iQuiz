@@ -4,9 +4,18 @@ const router = express.Router();
 
 // CONTROLLERS
 const { login, checkAuth, register } = require("../controllers/auth");
+
 const { getUsers } = require("../controllers/user");
+
 const { getCourses } = require("../controllers/course/course");
-const { getCourseLevel } = require("../controllers/course/courseLevel");
+
+const {
+  getCourseLevel,
+  addCourseLevel,
+  deleteCourseLevel,
+} = require("../controllers/course/courseLevel");
+
+const { addLesson, getLesson } = require("../controllers/course/lesson");
 
 // MIDDLEWARES
 const { auth } = require("../middlewares/auth");
@@ -22,5 +31,10 @@ router.get("/users", getUsers);
 router.get("/courses", getCourses);
 
 router.get("/course-level/:id", getCourseLevel);
+router.post("/course-level", addCourseLevel);
+router.delete("/course-level/:id", deleteCourseLevel);
+
+router.post("/lesson", addLesson);
+router.get("/lesson/:id", getLesson);
 
 module.exports = router;

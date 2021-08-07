@@ -1,21 +1,22 @@
-import { useContext, useEffect } from "react";
-import { Switch, Route, useHistory } from "react-router-dom";
+import { useContext, useEffect } from 'react';
+import { Switch, Route, useHistory } from 'react-router-dom';
 
-import AOS from "aos";
-import "aos/dist/aos.css";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
-import Landing from "./pages/Landing";
-import BuySuperUser from "./pages/BuySuperUser";
-import SuperUser from "./pages/SuperUser";
-import Profile from "./pages/Profile";
-import Dashboard from "./pages/Dashboard";
-import Course from "./pages/Course";
-import Admin from "./pages/Admin";
-import CourseLevel from "./pages/CourseLevel";
+import Landing from './pages/Landing';
+import BuySuperUser from './pages/BuySuperUser';
+import SuperUser from './pages/SuperUser';
+import Profile from './pages/Profile';
+import Dashboard from './pages/Dashboard';
+import Course from './pages/Course';
+import Admin from './pages/Admin';
+import CourseLevel from './pages/CourseLevel';
+import LessonAdmin from './pages/LessonAdmin';
 
-import { UserContext } from "./contexts/userContext";
+import { UserContext } from './contexts/userContext';
 
-import { API, setAuthToken } from "./config/api";
+import { API, setAuthToken } from './config/api';
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -28,11 +29,11 @@ function App() {
 
   const checkUser = async () => {
     try {
-      const response = await API.get("/check-auth");
+      const response = await API.get('/check-auth');
 
-      if (response.data.status === "failed") {
+      if (response.data.status === 'failed') {
         return dispatch({
-          type: "AUTH_ERROR",
+          type: 'AUTH_ERROR',
         });
       }
 
@@ -40,7 +41,7 @@ function App() {
       payload.token = localStorage.token;
 
       dispatch({
-        type: "USER_SUCCESS",
+        type: 'USER_SUCCESS',
         payload,
       });
     } catch (error) {
@@ -54,13 +55,13 @@ function App() {
 
   useEffect(() => {
     if (state.isLogin == true) {
-      if (state.user.role == "ADMIN") {
-        history.push("/admin");
+      if (state.user.role == 'ADMIN') {
+        history.push('/admin');
       } else {
-        history.push("/");
+        history.push('/');
       }
     } else {
-      history.push("/");
+      history.push('/');
     }
   }, [state]);
 
@@ -74,6 +75,7 @@ function App() {
       <Route path="/course/:id" component={Course} />
       <Route path="/admin" component={Admin} />
       <Route path="/level-course/:id" component={CourseLevel} />
+      <Route path="/lesson/:id" component={LessonAdmin} />
     </Switch>
   );
 }

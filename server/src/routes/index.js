@@ -1,40 +1,45 @@
-const express = require("express");
+const express = require('express');
 
 const router = express.Router();
 
 // CONTROLLERS
-const { login, checkAuth, register } = require("../controllers/auth");
+const { login, checkAuth, register } = require('../controllers/auth');
 
-const { getUsers } = require("../controllers/user");
+const { getUsers } = require('../controllers/user');
 
-const { getCourses } = require("../controllers/course/course");
+const { getCourses } = require('../controllers/course/course');
 
 const {
   getCourseLevel,
   addCourseLevel,
   deleteCourseLevel,
-} = require("../controllers/course/courseLevel");
+} = require('../controllers/course/courseLevel');
 
-const { addLesson, getLesson } = require("../controllers/course/lesson");
+const { addLesson, getLesson } = require('../controllers/course/lesson');
+
+const { getContent, addContent } = require('../controllers/course/content');
 
 // MIDDLEWARES
-const { auth } = require("../middlewares/auth");
+const { auth } = require('../middlewares/auth');
 // const { uploadFile } = require('../middlewares/uploadFile')
 
 // ROUTER
-router.post("/login", login);
-router.post("/register", register);
-router.get("/check-auth", auth, checkAuth);
+router.post('/login', login);
+router.post('/register', register);
+router.get('/check-auth', auth, checkAuth);
 
-router.get("/users", getUsers);
+router.get('/users', getUsers);
 
-router.get("/courses", getCourses);
+router.get('/courses', getCourses);
 
-router.get("/course-level/:id", getCourseLevel);
-router.post("/course-level", addCourseLevel);
-router.delete("/course-level/:id", deleteCourseLevel);
+router.get('/course-level/:id', getCourseLevel);
+router.post('/course-level', addCourseLevel);
+router.delete('/course-level/:id', deleteCourseLevel);
 
-router.post("/lesson", addLesson);
-router.get("/lesson/:id", getLesson);
+router.post('/lesson', addLesson);
+router.get('/lesson/:id', getLesson);
+
+router.get('/content/:id', getContent);
+router.post('/content', addContent);
 
 module.exports = router;

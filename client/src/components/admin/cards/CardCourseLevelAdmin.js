@@ -1,20 +1,26 @@
-import { useState } from "react";
-import { Container, Row, Col, Button } from "react-bootstrap";
+import { useState } from 'react';
+import { Container, Row, Col, Button } from 'react-bootstrap';
+import { useHistory } from 'react-router-dom';
 
-import { MdArrowBack, MdEdit } from "react-icons/md";
-import { AiFillFolderAdd } from "react-icons/ai";
-import { BsFillTrash2Fill } from "react-icons/bs";
-import { FaPlusSquare, FaPlusCircle } from "react-icons/fa";
+import { MdArrowBack, MdEdit } from 'react-icons/md';
+import { AiFillFolderAdd } from 'react-icons/ai';
+import { BsFillTrash2Fill } from 'react-icons/bs';
+import { FaPlusSquare, FaPlusCircle } from 'react-icons/fa';
 
-import LessonModalAdd from "../modals/LessonModalAdd";
+import LessonModalAdd from '../modals/LessonModalAdd';
 
 export default function CardCourseLevelAdmin(props) {
+  let history = useHistory();
   const { item, handleDelete, refetch } = props;
 
   // Modal Lesson
   const [showAddLesson, setShowAddLesson] = useState(false);
   const handleCloseAddLesson = () => setShowAddLesson(false);
   const handleShowAddLesson = () => setShowAddLesson(true);
+
+  const handleToLesson = (id) => {
+    history.push(`/lesson/${id}`);
+  };
 
   return (
     <>
@@ -41,11 +47,21 @@ export default function CardCourseLevelAdmin(props) {
             </Button>
           </div>
         </div>
-        {item.levelLesson.map((itemLesson) => (
-          <span className="card-level-lesson-admin me-1 p-1 px-2 rounded d-inline-flex mb-1">
-            {itemLesson.name}
-          </span>
-        ))}
+        <Container fluid>
+          <Row>
+            {item.levelLesson.map((itemLesson) => (
+              <Col xs="3" className="px-0">
+                <div
+                  className="card-level-lesson-admin me-1 p-1 px-2 rounded mb-1 px-0"
+                  style={{ minHeight: '80px' }}
+                  onClick={() => handleToLesson(itemLesson.id)}
+                >
+                  {itemLesson.name}
+                </div>
+              </Col>
+            ))}
+          </Row>
+        </Container>
       </div>
       <LessonModalAdd
         showAddLesson={showAddLesson}

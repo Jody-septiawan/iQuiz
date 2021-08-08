@@ -19,7 +19,7 @@ export default function CardCourseLevelAdmin(props) {
   const handleShowAddLesson = () => setShowAddLesson(true);
 
   const handleToLesson = (id) => {
-    history.push(`/lesson/${id}`);
+    history.push(`/lesson-admin/${id}`);
   };
 
   return (

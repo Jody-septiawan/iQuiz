@@ -13,6 +13,7 @@ import Course from './pages/Course';
 import Admin from './pages/Admin';
 import CourseLevel from './pages/CourseLevel';
 import LessonAdmin from './pages/LessonAdmin';
+import Lesson from './pages/Lesson';
 
 import { UserContext } from './contexts/userContext';
 
@@ -24,7 +25,7 @@ if (localStorage.token) {
 
 function App() {
   let history = useHistory();
-  AOS.init({ duration: 2000 });
+  AOS.init({ duration: 1000 });
   const [state, dispatch] = useContext(UserContext);
 
   const checkUser = async () => {
@@ -75,7 +76,8 @@ function App() {
       <Route path="/course/:id" component={Course} />
       <Route path="/admin" component={Admin} />
       <Route path="/level-course/:id" component={CourseLevel} />
-      <Route path="/lesson/:id" component={LessonAdmin} />
+      <Route path="/lesson-admin/:id" component={LessonAdmin} />
+      <Route path="/lesson/:id" component={Lesson} />
     </Switch>
   );
 }

@@ -1,11 +1,11 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 * {
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 .text-poppins {
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 .text-blue {
@@ -198,4 +198,61 @@ button:active {
   background-color: #1a84c21f;
   border-radius: 5px;
   padding: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.card-content:hover {
+  background-color: #1a84c267;
+}
+
+.card-content-left {
+  background-color: #e6e6e6;
+  padding: 3px;
+}
+
+.card-content-left div {
+  background-color: #ffffffd2;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.card-content-left div:hover {
+  background-color: #134866d3;
+  color: #ffffff;
+}
+
+.card-content-left-children-active {
+  background-color: #134866d3 !important;
+  color: #ffffff !important;
+}
+
+.card-content-right {
+  background-color: #e1f2fc;
+  padding: 10px;
+  white-space: pre-wrap;
+}
+
+.card-code {
+  background-color: #000000;
+  color: #00ffdd;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.answer-active {
+  border: 2px solid #ae00ff;
+}
+
+.answer-non-active {
+  border: 2px solid #51345f;
+}
+
+.answer-active,
+.answer-non-active {
+  border-radius: 5px;
+  width: 25px;
+  height: 25px;
+  display: inline-block;
+  margin: 0 5px 0 0;
 }

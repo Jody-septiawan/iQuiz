@@ -17,7 +17,11 @@ const {
 
 const { addLesson, getLesson } = require('../controllers/course/lesson');
 
-const { getContent, addContent } = require('../controllers/course/content');
+const {
+  getContent,
+  addContent,
+  getContentLesson,
+} = require('../controllers/course/content');
 
 // MIDDLEWARES
 const { auth } = require('../middlewares/auth');
@@ -41,5 +45,6 @@ router.get('/lesson/:id', getLesson);
 
 router.get('/content/:id', getContent);
 router.post('/content', addContent);
+router.get('/content-lesson/:id', getContentLesson);
 
 module.exports = router;
